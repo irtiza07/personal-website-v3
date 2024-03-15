@@ -1,0 +1,19 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main # or whatever branch you want to trigger the deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make HTTP request to backend endpoint
+        run: |
+          set -e  # Fail the workflow if any command fails
+          curl -X POST \
+          -d "{\"repo_name\": \"${{ github.repository }}\", \"secret_id\": \"cool_test_id\"}" \
+          -H "Content-Type: application/json" \
+          "https://docker.irtizahafiz.com/deploy"
