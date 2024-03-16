@@ -14,6 +14,6 @@ jobs:
         run: |
           set -e  # Fail the workflow if any command fails
           curl -X POST \
-          -d "{\"repo_name\": \"${{ github.repository }}\", \"secret_id\": \"cool_test_id\"}" \
+          -d "{\"repo_name\": \"${{ github.repository }}\", \"secret_id\": \"${{secrets.SECRET_ID}}\"}" \
           -H "Content-Type: application/json" \
           "https://docker.irtizahafiz.com/deploy"
